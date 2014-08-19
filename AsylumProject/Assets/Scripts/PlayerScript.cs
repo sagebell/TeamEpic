@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonLightBehaviour : MonoBehaviour {
-	public GameObject lightObject;
+public class PlayerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,9 +11,5 @@ public class ButtonLightBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-	void OnMouseUpAsButton() {
-		lightObject.SetActive(!lightObject.activeSelf);
 	}
 }
