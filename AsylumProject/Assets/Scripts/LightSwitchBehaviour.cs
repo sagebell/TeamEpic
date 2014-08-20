@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Attach this to a switch object, then add one light object that it will affect
 public class LightSwitchBehaviour : MonoBehaviour {
 
 	public GameObject lightObject = null;
