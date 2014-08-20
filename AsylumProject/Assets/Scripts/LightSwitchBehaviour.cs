@@ -15,7 +15,7 @@ public class LightSwitchBehaviour : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
-		float dist = Vector3.Distance (this.gameObject.transform.position, dataCore.thePlayer.transform.postion);
+		float dist = Vector3.Distance (this.gameObject.transform.position, dataCore.thePlayer.transform.position);
 	
 		if (light != null) {
 			if(dist < dataCore.interactionDistance) {
