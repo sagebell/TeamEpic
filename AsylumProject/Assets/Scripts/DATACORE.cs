@@ -18,8 +18,7 @@ public class DATACORE : MonoBehaviour {
 			if(thePlayer == null) {
 				Debug.Log("MARK THE PLAYER OBJECT WITH THE PLAYER TAG!!!");
 			}
-		}
-	
+		}	
 	}
 	
 	// Update is called once per frame

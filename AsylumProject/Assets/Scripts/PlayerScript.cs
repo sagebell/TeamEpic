@@ -13,6 +13,14 @@ public class PlayerScript : MonoBehaviour {
 		if (dataCore == null) {
 			dataCore = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<DATACORE>();
 		}
+
+		if (rightHandTarget == null) {
+			Debug.Log("Right Hand Not Set!!!");
+		}
+
+		if (leftHandTarget == null) {
+			Debug.Log("Left Hand Not Set!!!");
+		}
 	}
 	
 	// Update is called once per frame
