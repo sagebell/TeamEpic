@@ -49,15 +49,11 @@
      <Compile Include="Assets\HandyHands\scripts\VisualizeJoint.cs" />
      <Compile Include="Assets\HandyHands\scripts\showcasecam.cs" />
      <Compile Include="Assets\Scripts\AICORE.cs" />
-     <Compile Include="Assets\Scripts\ChestBehaviour.cs" />
      <Compile Include="Assets\Scripts\DATACORE.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\ItemGlimmer.cs" />
      <Compile Include="Assets\Scripts\LightSwitchBehaviour.cs" />
-     <Compile Include="Assets\Scripts\NurseBehaviour.cs" />
-     <Compile Include="Assets\Scripts\OrderlyBehavoiur.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
-     <Compile Include="Assets\Scripts\RemoveColliderBehaviour.cs" />
      <None Include="Assets\HandyHands\shaders\handyskin.shader" />
      <None Include="Assets\HandyHands\readme.txt" />
   </ItemGroup>
