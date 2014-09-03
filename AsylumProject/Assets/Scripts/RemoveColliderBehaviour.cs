@@ -5,7 +5,7 @@ public class RemoveColliderBehaviour : MonoBehaviour {
 
 	public GameObject target;
 	public bool _IsToggle = true;
-	private bool junk = false;
+	private bool _junk = false;
 
 	// Use this for initialization
 	void Start () {
