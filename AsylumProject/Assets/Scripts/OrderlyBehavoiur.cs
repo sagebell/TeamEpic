@@ -1,18 +1,33 @@
 using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class OrderlyBehavoiur : MonoBehaviour {
 
-	private bool _fuckTHisShit = true;
+	public Vector3 _Target = Vector3.zero;
+	public GameObject _Player = null;
 
 	// Use this for initialization
 	void Start () {
-        // lame!
-	// THis shit is really fucking lame!!!!!!!!!!!!!!!!!!!!	
+     
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (_Target != Vector3.zero) {
+			this.transform.LookAt (_Target);
+			_Target = _Player.transform.position;
+		}
+	}
+
+	void OnTriggerEnter(Collider theCollider) {
+		if (theCollider.gameObject.layer == 9) {
+			if(audio != null) audio.Play ();
+			_Player = theCollider.gameObject;
+			_Target = theCollider.gameObject.transform.position;
+		}
+	}
+
+	void OnTriggerExit(Collider theCollider) {
+		_Target = Vector3.zero;
 	}
 }

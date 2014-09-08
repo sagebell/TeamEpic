@@ -7,6 +7,13 @@ public class DATACORE : MonoBehaviour {
 	public GameObject thePlayer = null;
 	public GUIText horrorMeter = null;
 
+	// Reticle Textures
+	public Texture _TargetReticleBase = null;
+	public Texture _TargetReticleHighlight = null;
+
+	// Horror Textures and Images
+	/* SPACE FOR DeLOMBA's HORROR STUFF*/
+
 	// The maximum distance a player can be from interacting with an object
 	public float interactionDistance = 5.0f;
 
