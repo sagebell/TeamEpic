@@ -55,6 +55,8 @@
      <Compile Include="Assets\Scripts\DoctorBehaviour.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\HUD.cs" />
+     <Compile Include="Assets\Scripts\HorrorMeter.cs" />
+     <Compile Include="Assets\Scripts\HorrorModifier.cs" />
      <Compile Include="Assets\Scripts\ItemGlimmer.cs" />
      <Compile Include="Assets\Scripts\LightSwitchBehaviour.cs" />
      <Compile Include="Assets\Scripts\NurseBehaviour.cs" />
@@ -64,7 +66,11 @@
      <None Include="Assets\HandyHands\shaders\handyskin.shader" />
      <None Include="Assets\HandyHands\readme.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
+<<<<<<< HEAD
  <HintPath>C:/Users/r202-stu/Desktop/ProjectManagement/TeamEpic/AsylumProject/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+=======
+ <HintPath>G:/delombaMichael_TeamEpicRepository/TeamEpic/AsylumProject/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+>>>>>>> 372f0c66d4730b451f1a9191579057cf4456b24d
  </Reference>
   </ItemGroup>
   <ItemGroup>
