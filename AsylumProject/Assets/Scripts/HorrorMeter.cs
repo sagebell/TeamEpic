@@ -4,9 +4,13 @@ using UnityEngine;
 public class HorrorMeter : MonoBehaviour
 {
 
-	public PlayerScript Player;
+	public GameObject Player;
     public Texture2D bgImage; 
     public Texture2D fgImage;
+
+	void Start() {
+		if (Player == null)	Player = GameObject.FindGameObjectWithTag ("Player");
+	}
 
 	void OnGUI () {
         // Create one Group to contain both images
@@ -18,7 +22,7 @@ public class HorrorMeter : MonoBehaviour
     
             // Create a second Group which will be clipped
             // We want to clip the image and not scale it, which is why we need the second Group
-            GUI.BeginGroup (new Rect (0, 0, Player.HorrorMeter * 8, 32));
+            GUI.BeginGroup (new Rect (0, 0, Player.GetComponent<PlayerScript>().HorrorMeter * 8, 32));
         
             // Draw the foreground image
             GUI.Box (new Rect (0, 0, 800, 32), fgImage);

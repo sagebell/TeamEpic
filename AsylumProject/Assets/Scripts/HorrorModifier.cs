@@ -25,15 +25,20 @@ public class HorrorModifier : MonoBehaviour
 	public void OnTriggerStay(Collider other)
 	{
 		var player = other.GetComponent<PlayerScript>();
-		if (player == null)
+		if (player == null) {
+			Debug.Log("COLLIDER NOT THE PLAYER");
 			return;
+		}
 
 		Vector3 offset = other.transform.position - transform.position;
 		Distance = offset.sqrMagnitude;
 
-		if (InduceHorror)
+		if (InduceHorror) {
 			player.HorrorMeter += (DistanceOnEntry / Distance) * Modifier;
-		else if (ReduceHorror)
+			Debug.Log("INDUCING HORROR");
+		} else if (ReduceHorror) { 
 			player.HorrorMeter -= (DistanceOnEntry / Distance) * Modifier;
+			Debug.Log("REDUCING HORROR");
+		}
 	}
 }
