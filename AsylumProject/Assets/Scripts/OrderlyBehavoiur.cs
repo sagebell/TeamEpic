@@ -6,6 +6,8 @@ public class OrderlyBehavoiur : MonoBehaviour {
 	public Vector3 _Target = Vector3.zero;
 	public GameObject _Player = null;
 
+	public bool triggerEvent = false;
+
 	// Use this for initialization
 	void Start () {
      
@@ -43,5 +45,10 @@ public class OrderlyBehavoiur : MonoBehaviour {
 
 	void OnTriggerExit(Collider theCollider) {
 		_Target = Vector3.zero;
+	}
+
+	public void TriggerFreakOut() {
+		triggerEvent = true;
+		Debug.Log ("ORDERLY TRIGGERED");
 	}
 }

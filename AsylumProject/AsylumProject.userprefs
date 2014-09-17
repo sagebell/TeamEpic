@@ -1,12 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\OrderlyBehavoiur.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NurseBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\HorrorModifier.cs" Line="30" Column="11" />
-      <File FileName="Assets\Scripts\OrderlyBehavoiur.cs" Line="36" Column="42" />
-      <File FileName="Assets\Scripts\HorrorMeter.cs" Line="25" Column="80" />
+      <File FileName="Assets\Scripts\PatientBehaviour.cs" Line="44" Column="1" />
+      <File FileName="Assets\Scripts\HorrorModifier.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\OrderlyBehavoiur.cs" Line="55" Column="1" />
+      <File FileName="Assets\Scripts\HorrorMeter.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DATACORE.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NurseBehaviour.cs" Line="62" Column="1" />
+      <File FileName="Assets\Scripts\RemoveColliderBehaviour.cs" Line="32" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
