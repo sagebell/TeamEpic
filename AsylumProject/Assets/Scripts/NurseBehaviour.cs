@@ -6,29 +6,34 @@ public class NurseBehaviour : MonoBehaviour {
 	public bool triggerEvent = false;
 	public Transform EventPosition = null;
 
-	public PatientBehaviour Patient;
+	public PatientBehaviour patient;
 	public OrderlyBehavoiur orderly;
 
 	public float dist = 0.0f;
 
+	public DATACORE dataCore = null;
+
 	// Use this for initialization
 	void Start () {
-	
+		if (dataCore == null) {
+			dataCore = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<DATACORE>();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		var offset = transform.position - EventPosition.position;
-		dist = offset.magnitude;
+		//var offset = transform.position - EventPosition.position;
+		//dist = offset.magnitude;
+		dist = (transform.position - EventPosition.position).magnitude;
 
-		if (triggerEvent && dist > 1.75f)
+		if (triggerEvent && dist > 1.0f)
 			transform.position = Vector3.MoveTowards (transform.position, EventPosition.position, 2.0f * Time.deltaTime);
 
-		if (dist < 1.75f) {
-			Transform temp = Patient.transform;
+		if (dist < 1.0f) {
+			//Transform temp = patient.transform;
 			//temp.position.y = transform.position.y;
 			//transform.LookAt (temp.position);
-			transform.LookAt (Patient.transform.position);
+			transform.LookAt (patient.transform.position);
 			//Quaternion newRotation = Quaternion.LookRotation (Patient.transform.position - transform.position, Vector3.up);
 			//newRotation.y = 0.0f;
 			//transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, 0.5f * Time.deltaTime);
@@ -39,8 +44,11 @@ public class NurseBehaviour : MonoBehaviour {
 		if (theCollider.gameObject.layer == 9) {
 			// TRIGGER FREAKOUT EVENT
 			Debug.Log ("FREAKING OUT");
-			Patient.SendMessage("TriggerFreakOut");
-			orderly.SendMessage("TriggerFreakOut");
+			patient.SendMessage("TriggerFreakOut");
+			//orderly.SendMessage("TriggerFreakOut");
+			//TriggerFreakOut();
+			//dataCore.thePlayer.SendMessage("ToggleFreezePlayer");
+			dataCore.thePlayer.SendMessage("ToggleMovement");
 			CapsuleCollider [] colls = this.GetComponents<CapsuleCollider>();
 			if(colls != null) Debug.Log ("CapsuleColliders found");
 
@@ -55,7 +63,6 @@ public class NurseBehaviour : MonoBehaviour {
 
 	void TriggerFreakOut() {
 		triggerEvent = true;
-		//this.SendMessage("ToggleCollider");
 		this.gameObject.GetComponent<RemoveColliderBehaviour>().ToggleCollider ();
 	}
 }

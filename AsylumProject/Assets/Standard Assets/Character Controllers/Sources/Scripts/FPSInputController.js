@@ -1,4 +1,8 @@
 private var motor : CharacterMotor;
+public var directionVector : Vector3;
+public var stopped : boolean = false;
+public var gameStart : boolean = false;
+public var doctor : GameObject = null;
 
 // Use this for initialization
 function Awake () {
@@ -8,7 +12,16 @@ function Awake () {
 // Update is called once per frame
 function Update () {
 	// Get the input vector from keyboard or analog stick
-	var directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	if(stopped == false) directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	else directionVector = Vector3.zero;
+	
+	if(gameStart == false) {
+		if(Input.GetButtonDown("Fire1")) {
+		//if(Input.GetKey("Fire1")) {
+			doctor.SendMessage("PlayAudioOne");
+			gameStart = true;
+		}
+	}
 	
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it
@@ -35,3 +48,8 @@ function Update () {
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterMotor)
 @script AddComponentMenu ("Character/FPS Input Controller")
+
+function ToggleMovement() {
+	Debug.Log("TOGGLING MOVEMENT TO " + stopped);
+	stopped = !stopped;
+}

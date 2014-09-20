@@ -3,28 +3,50 @@ using System.Collections;
 
 public class OrderlyBehavoiur : MonoBehaviour {
 
+	public Transform eventPosition = null;
 	public Vector3 _Target = Vector3.zero;
+
 	public GameObject _Player = null;
+	public GameObject patient = null;
 
 	public bool triggerEvent = false;
+
+	public float dist = 0.0f;
 
 	// Use this for initialization
 	void Start () {
      
 	}
 
-	/*
+
 	// Update is called once per frame
 	void Update () {
+		if (triggerEvent == true) {
+			dist = (transform.position - eventPosition.position).magnitude;
+			
+			if (triggerEvent && dist > 1.0f)
+				transform.position = Vector3.MoveTowards (transform.position, eventPosition.position, 2.0f * Time.deltaTime);
+			
+			if (dist < 1.0f) {
+				//Transform temp = patient.transform;
+				//temp.position.y = transform.position.y;
+				//transform.LookAt (temp.position);
+				transform.LookAt (patient.transform.position);
+				//Quaternion newRotation = Quaternion.LookRotation (Patient.transform.position - transform.position, Vector3.up);
+				//newRotation.y = 0.0f;
+				//transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, 0.5f * Time.deltaTime);
+			}
+		}
+		/*
 		if (_Target != Vector3.zero) {
 			this.transform.LookAt (_Target);
 			_Target = _Player.transform.position;
 		}
+		*/
 	}
-	*/
 
 	void OnTriggerEnter(Collider theCollider) {
-		if (theCollider.gameObject.layer == 9) {
+		if (theCollider.gameObject.layer == 9 && triggerEvent == false) {
 			if(audio != null){
 				if(audio.isPlaying == false) audio.Play ();
 			}
@@ -35,7 +57,7 @@ public class OrderlyBehavoiur : MonoBehaviour {
 
 
 	void OnTriggerStay(Collider theCollider) {
-		if (theCollider.gameObject.layer == 9) this.transform.LookAt (_Player.transform.position);
+		if (theCollider.gameObject.layer == 9 && triggerEvent == false) this.transform.LookAt (_Player.transform.position);
 		//if (_Target != Vector3.zero) {
 		//	this.transform.LookAt (_Target);
 		//	_Target = _Player.transform.position;

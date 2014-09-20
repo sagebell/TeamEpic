@@ -26,7 +26,7 @@ public class HorrorModifier : MonoBehaviour
 	{
 		var player = other.GetComponent<PlayerScript>();
 		if (player == null) {
-			Debug.Log("COLLIDER NOT THE PLAYER");
+			Debug.Log(other.gameObject.name + " COLLIDER NOT THE PLAYER. DO NOT AFFECT HORROR METER");
 			return;
 		}
 

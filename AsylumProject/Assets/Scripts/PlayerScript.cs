@@ -9,8 +9,11 @@ public class PlayerScript : MonoBehaviour {
 	public float HorrorMeter = 0.0f;
 
 	private DATACORE dataCore = null;
-	    public float hSbarValue;
+    public float hSbarValue;
 
+	public bool movementFrozen = false;
+
+	public Transform holdPosition = null;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +29,12 @@ public class PlayerScript : MonoBehaviour {
 		if (leftHandTarget == null) {
 			Debug.Log("Left Hand Not Set!!!");
 		}
+
+		if (movementFrozen == true) {
+			this.transform.position = holdPosition.transform.position;
+		}
+
+		this.SendMessage ("ToggleMovement");
 	}
 	
 	// Update is called once per frame
