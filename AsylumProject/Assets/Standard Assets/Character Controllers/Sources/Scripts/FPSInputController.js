@@ -15,13 +15,13 @@ function Update () {
 	if(stopped == false) directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 	else directionVector = Vector3.zero;
 	
-	if(gameStart == false) {
+	/*if(gameStart == false) {
 		if(Input.GetButtonDown("Fire1")) {
 		//if(Input.GetKey("Fire1")) {
 			doctor.SendMessage("PlayAudioOne");
 			gameStart = true;
 		}
-	}
+	}*/
 	
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it

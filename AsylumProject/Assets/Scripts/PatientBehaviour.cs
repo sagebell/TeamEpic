@@ -6,6 +6,10 @@ public class PatientBehaviour : MonoBehaviour {
 	public Transform position1 = null;
 	public Transform position2 = null;
 	public Transform EventPosition = null;
+	public Transform[] resolutionWaypoints;
+
+	public int currentWaypoint = 0;
+	public bool faceWaypoint = false;
 
 	public float dist1 = 0.0f;
 	public float dist2 = 0.0f;
@@ -15,6 +19,7 @@ public class PatientBehaviour : MonoBehaviour {
 	public bool walkTo = true;
 	public bool audioTriggered = false;
 	public bool triggerFlipped = false;
+	public bool resolveEvent = false;
 
 	public DATACORE dataCore = null;
 
@@ -30,7 +35,36 @@ public class PatientBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(triggerEvent == false && audioTriggered == false) {
+		if (resolveEvent == true) {
+			if(currentWaypoint >= resolutionWaypoints.Length) {
+				// Do nothing
+				this.gameObject.SetActive(false);
+			} 
+			else {
+				if(faceWaypoint == false) {
+					transform.LookAt(resolutionWaypoints[currentWaypoint]);
+					faceWaypoint = true;
+				}
+				
+				float distToCurrentPosition = (resolutionWaypoints[currentWaypoint].position - transform.position).magnitude;
+				
+				if(distToCurrentPosition < 0.5f) {
+					++currentWaypoint;
+					faceWaypoint = false;
+					Debug.Log ("Changing Way Point " + currentWaypoint);
+				}
+				
+				if(currentWaypoint < resolutionWaypoints.Length) {
+					//this.transform.LookAt(waypoints[currentWaypoint].position);
+					transform.position = Vector3.MoveTowards (transform.position, resolutionWaypoints[currentWaypoint].position, 2.0f * Time.deltaTime);
+				}
+				if(currentWaypoint == 1) {
+					nurse.SendMessage("ResolveFreakOut");
+					orderly.SendMessage("ResolveFreakOut");
+				}
+			}
+		}
+		else if(triggerEvent == false && audioTriggered == false) {
 			dist1 = (this.transform.position - position1.position).magnitude;
 			dist2 = (this.transform.position - position2.position).magnitude;
 
@@ -45,7 +79,15 @@ public class PatientBehaviour : MonoBehaviour {
 
 			if (walkTo) transform.position = Vector3.MoveTowards (transform.position, position2.position, 2.0f * Time.deltaTime);
 			else transform.position = Vector3.MoveTowards (transform.position, position1.position, 2.0f * Time.deltaTime);
-		} else {
+		} 
+		else if (audioTriggered == true && triggerEvent == true) {
+			// Trigger FreakOutResolve on patient, nurse, and orderly
+			if(audio.isPlaying == false) {
+				Debug.Log ("AUDIO FINISHED PLAYING");
+				ResolveFreakOut();
+			} 
+		}
+		else {
 			distEvent = (this.transform.position - EventPosition.position).magnitude;
 
 			if(distEvent < 0.1f) {
@@ -72,12 +114,7 @@ public class PatientBehaviour : MonoBehaviour {
 			}
 		}
 
-		if (audioTriggered == true && triggerEvent == true) {
-			// Trigger FreakOutResolve on patient, nurse, and orderly
-			if(audio.isPlaying == false) {
-				Debug.Log ("AUDIO FINISHED PLAYING");
-			} 
-		}
+
 	}
 
 	public void TriggerFreakOut() {
@@ -86,6 +123,7 @@ public class PatientBehaviour : MonoBehaviour {
 	}
 
 	public void ResolveFreakOut() {
-
+		resolveEvent = true;
+		Debug.Log ("PATIENT RESOLVING FREAKOUT");
 	}
 }

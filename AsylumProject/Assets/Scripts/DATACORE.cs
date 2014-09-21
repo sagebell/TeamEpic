@@ -9,7 +9,16 @@ public class DATACORE : MonoBehaviour {
 
 	// Reticle Textures
 	public Texture _TargetReticleBase = null;
-	public Texture _TargetReticleHighlight = null;
+	//public Texture _TargetReticleHighlight = null;
+	public Texture _targetReticleEnemy = null;
+	public Texture _targetReticleInteract = null;
+	public Texture _targetReticlePickUp = null;
+
+	public bool _aimingAtEnemy = false;
+	public bool _aimingAtInteract = false;
+	public bool _aimingAtPickUp = false;
+
+	public GameObject _targetAimingAt = null;
 
 	// Horror Textures and Images
 	/* SPACE FOR DeLOMBA's HORROR STUFF*/

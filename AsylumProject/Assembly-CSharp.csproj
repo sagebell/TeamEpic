@@ -53,11 +53,14 @@
      <Compile Include="Assets\Scripts\ChestBehaviour.cs" />
      <Compile Include="Assets\Scripts\DATACORE.cs" />
      <Compile Include="Assets\Scripts\DoctorBehaviour.cs" />
+     <Compile Include="Assets\Scripts\EnemyScriptCS.cs" />
      <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\HUD.cs" />
      <Compile Include="Assets\Scripts\HorrorMeter.cs" />
      <Compile Include="Assets\Scripts\HorrorModifier.cs" />
+     <Compile Include="Assets\Scripts\InteractionBehaviourCS.cs" />
      <Compile Include="Assets\Scripts\ItemGlimmer.cs" />
+     <Compile Include="Assets\Scripts\ItemScriptCS.cs" />
      <Compile Include="Assets\Scripts\LightSwitchBehaviour.cs" />
      <Compile Include="Assets\Scripts\NurseBehaviour.cs" />
      <Compile Include="Assets\Scripts\OrderlyBehavoiur.cs" />

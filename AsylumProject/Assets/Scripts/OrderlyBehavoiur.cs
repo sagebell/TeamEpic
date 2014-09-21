@@ -4,6 +4,9 @@ using System.Collections;
 public class OrderlyBehavoiur : MonoBehaviour {
 
 	public Transform eventPosition = null;
+
+	public Transform[] resolutionWaypoints;
+
 	public Vector3 _Target = Vector3.zero;
 
 	public GameObject _Player = null;
@@ -13,15 +16,47 @@ public class OrderlyBehavoiur : MonoBehaviour {
 
 	public float dist = 0.0f;
 
+	public int currentWaypoint = 0;
+	public bool faceWaypoint = false;
+	public bool resolveEvent = false;
+
+	public DATACORE dataCore = null;
+
 	// Use this for initialization
 	void Start () {
-     
+		if (dataCore == null) {
+			dataCore = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<DATACORE>();
+		}
 	}
-
 
 	// Update is called once per frame
 	void Update () {
-		if (triggerEvent == true) {
+		if (resolveEvent == true) {
+			if(currentWaypoint >= resolutionWaypoints.Length) {
+				// Do nothing
+				this.gameObject.SetActive(false);
+			} 
+			else {
+				if(faceWaypoint == false) {
+					transform.LookAt(resolutionWaypoints[currentWaypoint]);
+					faceWaypoint = true;
+				}
+				
+				float distToCurrentPosition = (resolutionWaypoints[currentWaypoint].position - transform.position).magnitude;
+				
+				if(distToCurrentPosition < 2.5f) {
+					++currentWaypoint;
+					faceWaypoint = false;
+					Debug.Log ("Changing Way Point " + currentWaypoint);
+				}
+
+				if(currentWaypoint < resolutionWaypoints.Length) {
+					//this.transform.LookAt(waypoints[currentWaypoint].position);
+					transform.position = Vector3.MoveTowards (transform.position, resolutionWaypoints[currentWaypoint].position, 2.0f * Time.deltaTime);
+				}
+			}
+		}
+		else if (triggerEvent == true) {
 			dist = (transform.position - eventPosition.position).magnitude;
 			
 			if (triggerEvent && dist > 1.0f)
@@ -72,5 +107,11 @@ public class OrderlyBehavoiur : MonoBehaviour {
 	public void TriggerFreakOut() {
 		triggerEvent = true;
 		Debug.Log ("ORDERLY TRIGGERED");
+		this.gameObject.GetComponent<RemoveColliderBehaviour>().ToggleCollider ();
+	}
+
+	void ResolveFreakOut() {
+		resolveEvent = true;
+		Debug.Log ("ORDERLY RESOLVING FREAKOUT");
 	}
 }

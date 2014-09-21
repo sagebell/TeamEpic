@@ -83,6 +83,12 @@ public class DoctorBehaviour : MonoBehaviour {
 	void PlayAudioOne() {
 		auidoSources[0].Play ();
 		audioOneTriggered = true;
+		Destroy(GetComponent<InteractionBehaviourCS>());
+		//ItemScriptCS temp = this.gameObject.GetComponent<ItemScriptCS> ();
+
+		//if (temp == null) Debug.Log ("NO ITEM SCRIP");
+		//Destroy(this.gameObject.GetComponent <ItemScriptCS>());
+
 	}
 
 	void PlayAudioTwo() {
