@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OrderlyBehavoiur : MonoBehaviour {
 
-	public Transform eventPosition = null;
+    public Transform[] eventPositions;
 
 	public Transform[] resolutionWaypoints;
 
@@ -44,7 +44,7 @@ public class OrderlyBehavoiur : MonoBehaviour {
 				
 				float distToCurrentPosition = (resolutionWaypoints[currentWaypoint].position - transform.position).magnitude;
 				
-				if(distToCurrentPosition < 2.5f) {
+				if(distToCurrentPosition < 1.5f) {
 					++currentWaypoint;
 					faceWaypoint = false;
 					Debug.Log ("Changing Way Point " + currentWaypoint);
@@ -57,20 +57,46 @@ public class OrderlyBehavoiur : MonoBehaviour {
 			}
 		}
 		else if (triggerEvent == true) {
-			dist = (transform.position - eventPosition.position).magnitude;
+
+            if (currentWaypoint >= eventPositions.Length) {
+                transform.LookAt(patient.transform.position);
+            }
+            else
+            {
+                if (faceWaypoint == false)
+                {
+                    transform.LookAt(eventPositions[currentWaypoint]);
+                    faceWaypoint = true;
+                }
+
+                float distToCurrentPosition = (eventPositions[currentWaypoint].position - transform.position).magnitude;
+
+                if (distToCurrentPosition < 1.0f)
+                {
+                    ++currentWaypoint;
+                    faceWaypoint = false;
+                    Debug.Log("Changing Way Point " + currentWaypoint);
+                }
+
+                if (currentWaypoint < eventPositions.Length)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, eventPositions[currentWaypoint].position, 4.0f * Time.deltaTime);
+                } 
+            }
+			//dist = (transform.position - eventPosition.position).magnitude;
 			
-			if (triggerEvent && dist > 1.0f)
-				transform.position = Vector3.MoveTowards (transform.position, eventPosition.position, 2.0f * Time.deltaTime);
+			//if (triggerEvent && dist > 1.0f)
+				//transform.position = Vector3.MoveTowards (transform.position, eventPosition.position, 2.0f * Time.deltaTime);
 			
-			if (dist < 1.0f) {
+			//if (dist < 1.0f) {
 				//Transform temp = patient.transform;
 				//temp.position.y = transform.position.y;
 				//transform.LookAt (temp.position);
-				transform.LookAt (patient.transform.position);
+				//transform.LookAt (patient.transform.position);
 				//Quaternion newRotation = Quaternion.LookRotation (Patient.transform.position - transform.position, Vector3.up);
 				//newRotation.y = 0.0f;
 				//transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, 0.5f * Time.deltaTime);
-			}
+			//}
 		}
 		/*
 		if (_Target != Vector3.zero) {
@@ -106,12 +132,14 @@ public class OrderlyBehavoiur : MonoBehaviour {
 
 	public void TriggerFreakOut() {
 		triggerEvent = true;
+        currentWaypoint = 0;
 		Debug.Log ("ORDERLY TRIGGERED");
 		this.gameObject.GetComponent<RemoveColliderBehaviour>().ToggleCollider ();
 	}
 
 	void ResolveFreakOut() {
 		resolveEvent = true;
+        currentWaypoint = 0;
 		Debug.Log ("ORDERLY RESOLVING FREAKOUT");
 	}
 }

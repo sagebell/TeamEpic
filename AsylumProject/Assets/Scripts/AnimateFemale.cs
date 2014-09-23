@@ -57,7 +57,7 @@ public class AnimateFemale : MonoBehaviour
 			
 			if(currentWaypoint < waypoints.Length) {
 				//this.transform.LookAt(waypoints[currentWaypoint].position);
-				transform.position = Vector3.MoveTowards (transform.position, waypoints[currentWaypoint].position, 2.0f * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, waypoints[currentWaypoint].position, 8.0f * Time.deltaTime);
 			}
 		}
 	}

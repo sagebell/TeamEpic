@@ -31,29 +31,17 @@ public class HUD : MonoBehaviour {
 			}
 		}
 
-		/*if(Input.GetMouseButtonUp(1)) {
-			if(_thePlayer.GetComponent<PlayerScriptCS>()._currentItem == 2) {
-				_thePlayer.SendMessage ("AdjustHealth", _dataCore._fMaxHealth);
-				_thePlayer.SendMessage ("AdjustMana", _dataCore._fMaxMana);
-			} else if (_thePlayer.GetComponent<PlayerScriptCS>()._currentItem == 1)	{
-				_thePlayer.SendMessage ("AdjustMana", _dataCore._fMaxMana);
-			}else if (_thePlayer.GetComponent<PlayerScriptCS>()._currentItem == 0)	{
-				_thePlayer.SendMessage ("AdjustHealth", _dataCore._fMaxHealth);
-			}
-			
-			_thePlayer.GetComponent<PlayerScriptCS>()._currentItem = -1;
-
-		}*/
+        if (Input.GetKeyDown(KeyCode.Escape) == true)
+        {
+            Debug.Log("Escape Pushed");
+            //Screen.lockCursor = false;
+            //Screen.showCursor = true;
+            Application.LoadLevel("TitleScreen");
+        }
 	}
 	
 	void FixedUpdate () {
-		if (Input.GetKeyDown(KeyCode.Escape) == true) {
-			Debug.Log("Escape Pushed");
-			Screen.lockCursor = false;
-			Screen.showCursor = true;
-			Application.Quit();
-		}
-
+	
 		if (Camera.main == null) return;
 		//Debug.Log ("DOING SCREEN RAYCAST");
 		//Debug.Log (Camera.current);

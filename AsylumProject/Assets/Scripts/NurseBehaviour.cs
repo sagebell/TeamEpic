@@ -92,13 +92,15 @@ public class NurseBehaviour : MonoBehaviour {
 			//dataCore.thePlayer.SendMessage("ToggleFreezePlayer");
 			dataCore.thePlayer.SendMessage("ToggleMovement");
 			CapsuleCollider [] colls = this.GetComponents<CapsuleCollider>();
-			if(colls != null) Debug.Log ("CapsuleColliders found");
+            if (colls != null) {
+                Debug.Log("CapsuleColliders found");
 
-			for (var n = 0; n < colls.Length; n++)
-			{
-				if (colls[n].isTrigger == true)
-					colls[n].enabled = false;
-			}
+                //for (var n = 0; n < colls.Length; n++)
+                //{
+                  //  if (colls[n].isTrigger == true)
+                        colls[1].enabled = false;
+                //}
+            }
 
 		}
 	}

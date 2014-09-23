@@ -15,7 +15,7 @@ public class HorrorMeter : MonoBehaviour
 	void OnGUI () {
         // Create one Group to contain both images
         // Adjust the first 2 coordinates to place it somewhere else on-screen
-        GUI.BeginGroup (new Rect (Screen.width / 4f, 10, 1024, 32));
+        GUI.BeginGroup (new Rect (Screen.width / 10.0f, 10, 1024, 32));
     
         // Draw the background image
         GUI.Box (new Rect (0, 0, 800, 32), bgImage);
