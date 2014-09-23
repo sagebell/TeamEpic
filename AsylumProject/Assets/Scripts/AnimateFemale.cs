@@ -6,11 +6,29 @@ public class AnimateFemale : MonoBehaviour
 	public Animator m_anim = null;
 	public Transform [] waypoints = null;
 	public int currentWaypoint = 0;
-	public bool movementTriggered = false;
+	public bool movementTriggered { get; set; }
 	//public AnimatorOverrideController m_anim = null;
 
-	enum animState {WALKING, JUMP, LEFT_TURN, RIGHT_TURN, RIGHT_STRAFE_WALKING, LEFT_STRAFE_WALKING};
-	string[] m_animNames = new string[7]{"idle", "walking", "jump", "left_turn", "right_turn", "right_strafe_walking", "left_strafe_walking"};
+	enum animState
+	{
+		WALKING, 
+		JUMP, 
+		LEFT_TURN, 
+		RIGHT_TURN, 
+		RIGHT_STRAFE_WALKING, 
+		LEFT_STRAFE_WALKING
+	};
+
+	string[] m_animNames = new string[7]
+	{
+		"idle", 
+		"walking", 
+		"jump", 
+		"left_turn", 
+		"right_turn", 
+		"right_strafe_walking", 
+		"left_strafe_walking"
+	};
 	
 	int nextIndex = 0;
 
@@ -25,11 +43,14 @@ public class AnimateFemale : MonoBehaviour
 	void Update ()
 	{
 		PlayAnimation();
+		if (currentWaypoint >= waypoints.Length) {
+			movementTriggered = false;
+		}
 
 		if (movementTriggered == true) {
 			PlayAnimation(1);
 			float distToCurrentPosition = (waypoints[currentWaypoint].position - transform.position).magnitude;
-			if(distToCurrentPosition < 0.1f) {
+			if(distToCurrentPosition < 0.5f) {
 				++currentWaypoint;
 				Debug.Log ("Changing Way Point " + currentWaypoint);
 			}
@@ -37,8 +58,6 @@ public class AnimateFemale : MonoBehaviour
 			if(currentWaypoint < waypoints.Length) {
 				//this.transform.LookAt(waypoints[currentWaypoint].position);
 				transform.position = Vector3.MoveTowards (transform.position, waypoints[currentWaypoint].position, 2.0f * Time.deltaTime);
-			} else {
-				movementTriggered = false;
 			}
 		}
 	}

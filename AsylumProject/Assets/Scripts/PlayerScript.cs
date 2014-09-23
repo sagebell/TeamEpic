@@ -41,8 +41,15 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
 		HorrorMeter -= 0.001f;
 
-		if (HorrorMeter <= 0f) HorrorMeter = 0f;
-		if (HorrorMeter >= 100.0f) HorrorMeter = 100.0f;
+		if (HorrorMeter <= 0f)
+			HorrorMeter = 0f;
+
+		if (HorrorMeter >= 100.0f) 
+		{
+			Screen.showCursor = true;
+			Application.LoadLevel(2);
+			HorrorMeter = 100.0f;
+		}
 
 		
 	}

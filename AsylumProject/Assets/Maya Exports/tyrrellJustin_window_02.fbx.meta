@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: 90cdc7ba244c3604c9955e2fc146be6d
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: WindowFrame
+    100004: WindowInnerFrame
+    100006: WindowPaneBottom
+    100008: WindowPaneTop
+    100010: WindowPaneTopLeft
+    100012: WindowPaneTopLeftBottom
+    100014: WindowPaneTopLeftMiddle
+    100016: WindowPaneTopLeftTop
+    100018: WindowPaneTopMiddle
+    100020: WindowPaneTopRight
+    100022: WindowPaneTopRightBottom
+    100024: WindowPaneTopRightMiddle
+    100026: WindowPaneTopRightTop
+    400000: //RootNode
+    400002: WindowFrame
+    400004: WindowInnerFrame
+    400006: WindowPaneBottom
+    400008: WindowPaneTop
+    400010: WindowPaneTopLeft
+    400012: WindowPaneTopLeftBottom
+    400014: WindowPaneTopLeftMiddle
+    400016: WindowPaneTopLeftTop
+    400018: WindowPaneTopMiddle
+    400020: WindowPaneTopRight
+    400022: WindowPaneTopRightBottom
+    400024: WindowPaneTopRightMiddle
+    400026: WindowPaneTopRightTop
+    2300000: WindowFrame
+    2300002: WindowInnerFrame
+    2300004: WindowPaneBottom
+    2300006: WindowPaneTopLeftBottom
+    2300008: WindowPaneTopLeftMiddle
+    2300010: WindowPaneTopLeftTop
+    2300012: WindowPaneTopMiddle
+    2300014: WindowPaneTopRightBottom
+    2300016: WindowPaneTopRightMiddle
+    2300018: WindowPaneTopRightTop
+    3300000: WindowFrame
+    3300002: WindowInnerFrame
+    3300004: WindowPaneBottom
+    3300006: WindowPaneTopLeftBottom
+    3300008: WindowPaneTopLeftMiddle
+    3300010: WindowPaneTopLeftTop
+    3300012: WindowPaneTopMiddle
+    3300014: WindowPaneTopRightBottom
+    3300016: WindowPaneTopRightMiddle
+    3300018: WindowPaneTopRightTop
+    4300000: WindowFrame
+    4300002: WindowInnerFrame
+    4300004: WindowPaneBottom
+    4300006: WindowPaneTopMiddle
+    4300008: WindowPaneTopRightMiddle
+    4300010: WindowPaneTopRightTop
+    4300012: WindowPaneTopRightBottom
+    4300014: WindowPaneTopLeftMiddle
+    4300016: WindowPaneTopLeftTop
+    4300018: WindowPaneTopLeftBottom
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
